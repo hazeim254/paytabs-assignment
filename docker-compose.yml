@@ -1,0 +1,33 @@
+version: "3"
+services:
+  hazem_web:
+    build: .
+    depends_on:
+      - hazem_db
+    ports:
+      - "8080:8080"
+    networks:
+      - hazem-app
+    volumes:
+      - ".:/app"
+
+    environment:
+      - database.default.host="hazem_db"
+      - database.default.database="categories"
+      - database.default.username="hazem"
+      - database.default.password="hazem"
+
+
+
+  hazem_db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD="secret"
+      - MYSQL_DATABASE="catagories"
+      - MYSQL_USER="hazem"
+      - MYSQL_PASSWORD="hazem"
+    networks:
+      - hazem-app
+
+networks:
+  hazem-app:
