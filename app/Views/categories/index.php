@@ -45,6 +45,8 @@
 
         container.on('change', 'select', function() {
             let value = $(this).val();
+            let categoryName = $(this).find(`option[value=${value}]`).text();
+
             $.ajax({
                 url: `/categories/ajax/${value}`,
                 dataType: 'json',
@@ -54,6 +56,7 @@
                 if (response.length) {
                     const element = $(template);
                     const select = element.find('select');
+                    element.find('label').text(`${categoryName} Subcategory`);
 
                     response.forEach(category => {
                         select.append(`<option value="${category.id}">${category.name}</option>`);
