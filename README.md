@@ -34,3 +34,5 @@ Then open the browser at `http://localhost:8080` to find the demo page.
 - `app/Models/CategoryModel.php`
 - `app/Controllers/Categories.php`
 - `app/Views/categories/index.php`
+
+HTML and JS code is kept in one file for simplicity 
